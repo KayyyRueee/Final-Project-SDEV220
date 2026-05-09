@@ -1,7 +1,46 @@
-{% extends "medications/base.html" %}
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "medications/base.html" %}
 
-{% block content %}
-<h1>Medication Check System</h1>
+    {% block content %}
+    <h1>Medication Check System</h1>
 
-<p>Welcome to your med-check tool.</p>
-{% endblock %}
+    <p>Clients who are having common syptoms don't always have to go to the hospital.</p>
+    <p> Check see if any common otc can help. </p>
+     {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td> 
+                <td>{{ form.username }}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+
+        <input type="submit" value="login" />
+        <input type="hidden" name="next" value="{{ next }}" />
+
+         <p>Don't have an account?<a href="{% url 'register' %}">
+            Sign up here</a></p>
+            
+    </form>
+
+    <a href="/kaysfinalproject/checker/"><button>Go to Medication Checker</button></a>
+    {% endblock %}
+    
+</body>
+</html>

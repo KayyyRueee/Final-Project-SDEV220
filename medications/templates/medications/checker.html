@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Medication Checker</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+            <h3>What syptoms is your client experiencing?</h3>
+            <h3>1. Pain</h3>
+            <h3>2. Cough</h3>
+            <h3>3. Heartburn</h3>
+            <h3>4. Allergies</h3>
+            <h3>5. Constipation</h3>
+            <input type="number" name="symptom_choice" min="1" max="5" required>
+            <h3>What OTC med are you suggesting?</h3>
+            <input type="text" name="med2">
+            <button type="submit">Check</button>
+    </form>
+
+{% if result %}
+    <h3><pre>{{ result }}</pre></h3>
+{% endif %} 
+</body>
+</html>
