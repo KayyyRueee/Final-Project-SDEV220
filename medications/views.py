@@ -48,7 +48,7 @@ def register(request):
             error = "Invalid company code. You are not authorized to register."
         elif form.is_valid():
             form.save()
-            return redirect("login")
+            return redirect("checker")
     else:
         form = UserCreationForm()
 
